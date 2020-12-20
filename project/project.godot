@@ -24,9 +24,15 @@ config/icon="res://icon.png"
 BaitManager="*res://baits/BaitManager.gd"
 LootManager="*res://loot/LootManager.gd"
 
+[display]
+
+window/size/width=1280
+window/size/height=720
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 1, 1, 1, 1 )
 environment/default_environment="res://default_env.tres"
