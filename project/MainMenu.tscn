@@ -1,4 +1,28 @@
-[gd_scene format=2]
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/images/waterfall_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/waterfall_5.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/waterfall_4.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/ahab_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/ahab_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/waterfall_3.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/waterfall_2.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -6,3 +30,14 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Ahab" type="AnimatedSprite" parent="."]
+position = Vector2( 635.213, 391.257 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="Waterfall" type="AnimatedSprite" parent="."]
+position = Vector2( 640, 644.359 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
