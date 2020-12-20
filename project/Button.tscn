@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Button.gd" type="Script" id=1]
+
+[node name="Button" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+cooldown = false
+reward_resource = {
+"active": false,
+"amount": 0,
+"type": ""
+}
+cost = {
+"active": false,
+"base_cost": 100,
+"exponential_progression": 1.2,
+"incremental_cost": 20,
+"times_used": 0,
+"type": ""
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 119.0
+margin_bottom = 32.0
+text = "cheddar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CooldownTween" type="Tween" parent="."]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
