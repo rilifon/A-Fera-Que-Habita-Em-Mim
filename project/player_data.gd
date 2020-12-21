@@ -3,7 +3,8 @@ extends Node
 signal update_resources
 
 const ENUMS = {
-	"rod_quality": ["Insalúbre", "Rubicunda", "Taciturna", "Kafkaesca", "Agnóstica", "Contatória", "Deletéria", "Idiossincrática", "Belicosa", "Iconoclasta"]
+	"rod_quality": ["Insalúbre", "Rubicunda", "Taciturna", "Kafkaesca", "Agnóstica", "Contatória", "Deletéria", "Idiossincrática", "Belicosa", "Iconoclasta"],
+	"line_length": ["2 metros", "13 pés", "1968,5 polegadas", ".03 milhas", "varios decâmetros", "60 FPS", "duas mil 7belos alinhadas", "250 ampères", "7 gorilas pequenos", "7 gorilas medianos", "mais de um hectômetro", "200 megabytes", "uma porrada de espaguete", "2 maracanãs", "intestino grosso extendido", "amor de mãe", "semana útil-luz", "2 parsecs", "1 siriômetro", "grandão, tipo, pra caramba"]
 }
 
 var resources = {
@@ -23,9 +24,10 @@ var resources = {
 	},
 	"line_length":{
 		"name": "Tamanho da Linha",
-		"amount": 3,
+		"amount": 0,
+		"max": 19,
 		"gain_per_second": 0,
-		"suffix": "metro",
+		"suffix": "enum",
 		"showing": true
 	},
 	"rod_quality":{
@@ -34,6 +36,14 @@ var resources = {
 		"max": ENUMS.rod_quality.size() - 1,
 		"gain_per_second": 0,
 		"suffix": "enum",
+		"showing": true
+	},
+	"auto_fish":{
+		"name": "Molinete de Fusão a Frio",
+		"amount": 0,
+		"max": 1,
+		"gain_per_second": 0,
+		"suffix": "naco",
 		"showing": true
 	},
 }
