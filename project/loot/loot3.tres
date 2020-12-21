@@ -9,5 +9,5 @@ id = "loot_3"
 loot_name = "macaco"
 image = ExtResource( 2 )
 fishing_chance = 3
-minimum_length = 7
+minimum_length = 3
 base_cost = 100

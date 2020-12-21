@@ -76,7 +76,7 @@ reward_resource = {
 cost = {
 "active": true,
 "base_cost": 50,
-"exponential_progression": 1.4,
+"exponential_progression": 1.35,
 "incremental_cost": 30,
 "times_used": 0,
 "type": "money"
