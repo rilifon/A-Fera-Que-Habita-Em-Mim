@@ -31,11 +31,13 @@ signal finished_cooldown
 
 const HOVER_SCALE = 1.1
 const SCALE_SPEED = 3
+const ROD_SPEED_UP = [1.0, .9, .8, .7, .6, .5, .4, .3, .2, 0.01]
 
 var player = null
 var main = null
 var hovered = false
 var on_cooldown := false
+var disable = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -86,7 +88,13 @@ func error():
 func start_cooldown():
 	$Button.disabled = true
 	on_cooldown = true
-	$Cooldown/TextureRect/AnimationPlayer.playback_speed = 1.0/cooldown
+	var duration
+	if id != "fishing":
+		duration = cooldown
+	else:
+		var rod_quality = player.get_resource_amount("rod_quality")
+		duration = cooldown * ROD_SPEED_UP[rod_quality]
+	$Cooldown/TextureRect/AnimationPlayer.playback_speed = 1.0/duration
 	$Cooldown/TextureRect/AnimationPlayer.play("Cooldown")
 	yield($Cooldown/TextureRect/AnimationPlayer, "animation_finished")
 	$Cooldown/TextureRect/AnimationPlayer.play("Idle")
@@ -95,7 +103,18 @@ func start_cooldown():
 	emit_signal("finished_cooldown")
 
 
+func maxed_out():
+	$Button.text = "   FORA DE ESTOQUE   "
+	$Cost.text = ""
+	rect_min_size.y = $Button.rect_position.y + $Button.rect_size.y
+	disable = true
+
+
 func _on_Button_pressed():
+	if disable:
+		error()
+		return
+
 	if cost.active:
 		if id != "fishing":
 			if player.get_resource_amount(cost.type) >= get_cost_amount():
@@ -127,6 +146,10 @@ func _on_Button_pressed():
 			AudioManager.play_sfx("buying")
 		if reward_resource.has("engine") and reward_resource.engine.active:
 			player.increase_gain_per_second(reward_resource.engine.type, reward_resource.engine.amount)
+		
+		var data = player.get_resource_data(reward_resource.type)
+		if data.has("max") and data.max <= data.amount:
+			maxed_out()
 	else:
 		emit_signal("acted", self)
 		

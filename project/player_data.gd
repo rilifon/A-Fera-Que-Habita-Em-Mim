@@ -2,6 +2,10 @@ extends Node
 
 signal update_resources
 
+const ENUMS = {
+	"rod_quality": ["Insalúbre", "Rubicunda", "Taciturna", "Kafkaesca", "Agnóstica", "Contatória", "Deletéria", "Idiossincrática", "Belicosa", "Iconoclasta"]
+}
+
 var resources = {
 	"money":{
 		"name": "Grana",
@@ -22,6 +26,14 @@ var resources = {
 		"amount": 3,
 		"gain_per_second": 0,
 		"suffix": "metro",
+		"showing": true
+	},
+	"rod_quality":{
+		"name": "Qualidade da Vara",
+		"amount": 0,
+		"max": ENUMS.rod_quality.size() - 1,
+		"gain_per_second": 0,
+		"suffix": "enum",
 		"showing": true
 	},
 }
@@ -49,6 +61,10 @@ func get_resource_name(name):
 func get_resource_amount(name):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))
 	return resources[name].amount
+
+func get_resource_data(name):
+	assert(resources.has(name), "Resource doesn't exist: " + str(name))
+	return resources[name]
 
 func spend(name, amount):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))

@@ -92,9 +92,12 @@ func set_resource_text(resource_object):
 		if resource.amount != 1:
 			resource_object.text += "s"
 	elif resource_object is Label:
-		resource_object.text = "%s: %d %s" % [resource.name, resource.amount, resource.suffix]
-		if resource.amount != 1:
-			resource_object.text += "s"
+		if resource.suffix == "enum":
+			resource_object.text = "%s: %s" % [resource.name, player.ENUMS[resource_object.type][resource.amount]]
+		else:
+			resource_object.text = "%s: %d %s" % [resource.name, resource.amount, resource.suffix]
+			if resource.amount != 1:
+				resource_object.text += "s"
 	if resource.gain_per_second > 0:
 		resource_object.text += " (+%.2f/s)" % resource.gain_per_second
 

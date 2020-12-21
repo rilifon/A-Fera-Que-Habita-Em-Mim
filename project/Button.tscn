@@ -55,6 +55,11 @@ __meta__ = {
 reward_resource = {
 "active": false,
 "amount": 0,
+"engine": {
+"active": false,
+"amount": 0.0,
+"type": ""
+},
 "type": ""
 }
 cost = {
