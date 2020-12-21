@@ -30,11 +30,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 100
 font_data = ExtResource( 8 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 13 ) ],
 "loop": true,
@@ -42,8 +42,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=3]
-resource_name = "intro"
+[sub_resource type="Animation" id=5]
 length = 45.5
 step = 0.5
 tracks/0/type = "value"
@@ -178,13 +177,39 @@ tracks/10/keys = {
 "update": 1,
 "values": [ true, true, false ]
 }
+tracks/11/type = "method"
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 40 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_process"
+} ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("TextLayer/Skip:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 50
 outline_size = 5
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 36
 outline_size = 3
 font_data = ExtResource( 8 )
@@ -220,11 +245,12 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Menu"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 696.0
 margin_bottom = 293.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "A fera que
 habita em mim"
@@ -235,11 +261,14 @@ __meta__ = {
 }
 
 [node name="Fera" type="AnimatedSprite" parent="Menu"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1000, 363 )
-frames = SubResource( 7 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 4 )
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 270.0
 margin_top = 350.0
 margin_right = 470.0
@@ -253,6 +282,7 @@ __meta__ = {
 margin_right = 200.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 200, 70 )
+disabled = true
 text = "Continuar"
 
 [node name="NewGame" type="Button" parent="Menu/VBoxContainer"]
@@ -260,24 +290,25 @@ margin_top = 74.0
 margin_right = 200.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 200, 70 )
+disabled = true
 text = "Novo jogo"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 640, 360 )
+position = Vector2( 577, 372 )
 current = true
+zoom = Vector2( 0.03, 0.03 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
-anims/intro = SubResource( 3 )
+anims/intro = SubResource( 5 )
 
 [node name="TextLayer" type="CanvasLayer" parent="."]
 
 [node name="Story" type="Label" parent="TextLayer"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 margin_bottom = 77.0
 rect_min_size = Vector2( 1280, 100 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "E eu preciso alimentá-la..."
 align = 1
@@ -309,6 +340,6 @@ margin_left = 140.0
 margin_top = 38.0
 margin_right = 592.0
 margin_bottom = 82.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Segure para pular introdução"
