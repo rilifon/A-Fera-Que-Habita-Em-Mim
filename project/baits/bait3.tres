@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 id = "bait_3"
-bait_name = "Minhoquinhas"
+bait_name = "Gorgonzola"
 loot_table = [ "loot_7", "loot_8", "loot_9", "loot_10" ]
