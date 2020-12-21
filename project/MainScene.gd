@@ -54,7 +54,7 @@ func _on_button_acted(button):
 		var loot = FishingManager.get_loot(bait, player_data)
 		player_data.gain(loot, 1)
 	elif button.id == "buy_ending":
-		pass
+		get_tree().change_scene("res://Ending.tscn")
 
 
 func _on_Fishing_no_bait_selected():
