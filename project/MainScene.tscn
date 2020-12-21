@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Button.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://general_theme.tres" type="Theme" id=4]
 [ext_resource path="res://ui/ResourceList.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Itim-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/audio/bgm/main.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -17,10 +18,10 @@ font_data = ExtResource( 6 )
 script = ExtResource( 1 )
 
 [node name="Interface" type="HBoxContainer" parent="."]
-margin_left = 102.054
-margin_top = 158.75
-margin_right = 322.054
-margin_bottom = 313.75
+margin_left = 44.8731
+margin_top = 207.522
+margin_right = 394.873
+margin_bottom = 707.522
 custom_constants/separation = 100
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,7 +51,6 @@ rect_min_size = Vector2( 170, 85 )
 cooldown = 5.0
 text = "Pescar!"
 id = "fishing"
-level_unlocked = 0
 reward_resource = {
 "active": false,
 "amount": 0,
@@ -72,7 +72,6 @@ anchor_bottom = 0.0
 margin_top = 105.0
 margin_right = 170.0
 margin_bottom = 155.0
-cooldown = 0.0
 text = "   Comprar Corda   "
 id = "buy_rope"
 level_unlocked = 1
@@ -89,7 +88,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="Rod Quality" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -97,10 +95,8 @@ anchor_bottom = 0.0
 margin_top = 175.0
 margin_right = 170.0
 margin_bottom = 225.0
-cooldown = 0.0
 text = "   Melhorar Vara   "
 id = "improve_rod"
-level_unlocked = 0
 reward_resource = {
 "active": true,
 "amount": 1,
@@ -119,7 +115,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="MoneyEngine" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -127,7 +122,6 @@ anchor_bottom = 0.0
 margin_top = 245.0
 margin_right = 170.0
 margin_bottom = 295.0
-cooldown = 0.0
 text = "     Contratar Lacaio   "
 id = "buy_money_engine"
 level_unlocked = 1
@@ -149,7 +143,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="AutoFish" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -157,7 +150,6 @@ anchor_bottom = 0.0
 margin_top = 315.0
 margin_right = 170.0
 margin_bottom = 365.0
-cooldown = 0.0
 text = "     Comprar Molinete   "
 id = "buy_autofish"
 level_unlocked = 3
@@ -179,7 +171,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="Bait1" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -187,10 +178,8 @@ anchor_bottom = 0.0
 margin_top = 385.0
 margin_right = 170.0
 margin_bottom = 435.0
-cooldown = 0.0
 text = "   Comprar Minhocas   "
 id = "buy_bait1"
-level_unlocked = 0
 reward_resource = {
 "active": true,
 "amount": 1,
@@ -204,7 +193,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="Bait2" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -212,7 +200,6 @@ anchor_bottom = 0.0
 margin_top = 455.0
 margin_right = 170.0
 margin_bottom = 505.0
-cooldown = 0.0
 text = "   Comprar Hot Dog   "
 id = "buy_bait1"
 level_unlocked = 2
@@ -229,7 +216,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="Bait3" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -237,7 +223,6 @@ anchor_bottom = 0.0
 margin_top = 525.0
 margin_right = 170.0
 margin_bottom = 575.0
-cooldown = 0.0
 text = "   Comprar Gorgonzola   "
 id = "buy_bait1"
 level_unlocked = 3
@@ -254,7 +239,6 @@ cost = {
 "times_used": 0,
 "type": "money"
 }
-fake_cost = ""
 
 [node name="Beg" parent="Interface/ScrollContainer/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -265,7 +249,6 @@ margin_bottom = 645.0
 cooldown = 0.2
 text = "Mendigar"
 id = "fishing"
-level_unlocked = 0
 reward_resource = {
 "active": true,
 "amount": 1,
@@ -306,4 +289,13 @@ __meta__ = {
 }
 
 [node name="Fera" parent="." instance=ExtResource( 3 )]
+margin_left = 15.1361
+margin_top = -11.7726
+margin_right = 15.1361
+margin_bottom = -11.7726
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+bus = "BGM"
 [connection signal="no_bait_selected" from="Interface/ScrollContainer/Buttons/Fishing" to="." method="_on_Fishing_no_bait_selected"]
