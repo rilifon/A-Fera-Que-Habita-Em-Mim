@@ -6,13 +6,22 @@ var resources = {
 	"money":{
 		"name": "Grana",
 		"amount": 0,
-		"suffix": "doletas",
+		"gain_per_second": 0,
+		"suffix": "doleta",
 		"showing": true
+	},
+	"money_engine":{
+		"name": "Lacaios",
+		"amount": 0,
+		"gain_per_second": 0,
+		"suffix": "ostra",
+		"showing": false
 	},
 	"line_length":{
 		"name": "Tamanho da Linha",
 		"amount": 3,
-		"suffix": "metros",
+		"gain_per_second": 0,
+		"suffix": "metro",
 		"showing": true
 	},
 }
@@ -21,14 +30,14 @@ func init():
 	var first = true
 	resources["bait"] = {}
 	for bait in BaitManager.get_all_baits():
-		resources[bait.id] = {"name": bait.bait_name, "amount": 0, "showing": false, "suffix": "unidades",}
+		resources[bait.id] = {"name": bait.bait_name, "amount": 0, "showing": false, "suffix": "unidade", "gain_per_second": 0}
 		if first:
 			first = false
 			resources[bait.id].showing = true
 	
 	resources["loot"] = {}
 	for loot in LootManager.get_all_loots():
-		resources[loot.id] = {"name": loot.loot_name, "amount": 0, "showing": false, "image": loot.image}	
+		resources[loot.id] = {"name": loot.loot_name, "amount": 0, "showing": false, "image": loot.image, "gain_per_second": 0}
 
 func update_resources():
 	emit_signal("update_resources")
@@ -46,9 +55,14 @@ func spend(name, amount):
 	resources[name].amount = max(resources[name].amount - amount, 0)
 	update_resources()
 
-func gain(name, amount):
+func gain(name, amount, play_sfx := true):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))
 	resources[name].amount = resources[name].amount + amount
-	if name == "money":
+	if play_sfx and name == "money":
 		AudioManager.play_sfx("getting_money")
+	update_resources()
+
+func increase_gain_per_second(name, amount):
+	assert(resources.has(name), "Resource doesn't exist: " + str(name))
+	resources[name].gain_per_second = resources[name].gain_per_second + amount
 	update_resources()

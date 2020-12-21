@@ -89,8 +89,14 @@ func set_resource_text(resource_object):
 		resource_object.show()
 	if resource_object is Button:
 		resource_object.text = "                 %s: %d %s" % [resource.name, resource.amount, resource.suffix]
+		if resource.amount != 1:
+			resource_object.text += "s"
 	elif resource_object is Label:
 		resource_object.text = "%s: %d %s" % [resource.name, resource.amount, resource.suffix]
+		if resource.amount != 1:
+			resource_object.text += "s"
+	if resource.gain_per_second > 0:
+		resource_object.text += " (+%.2f/s)" % resource.gain_per_second
 
 
 func _on_loot_feed(loot, value):

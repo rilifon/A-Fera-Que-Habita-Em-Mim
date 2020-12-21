@@ -8,7 +8,12 @@ export var level_unlocked := 0
 export var reward_resource = {
 	"active":  false,
 	"type" : "",
-	"amount":  0
+	"amount":  0,
+	"engine": {
+		"active": false,
+		"type": "",
+		"amount": 0.0,
+	},
 }
 export var cost = {
 	"active":  false,
@@ -120,6 +125,8 @@ func _on_Button_pressed():
 		player.gain(reward_resource.type, reward_resource.amount)
 		if cost.active:
 			AudioManager.play_sfx("buying")
+		if reward_resource.has("engine") and reward_resource.engine.active:
+			player.increase_gain_per_second(reward_resource.engine.type, reward_resource.engine.amount)
 	else:
 		emit_signal("acted", self)
 		

@@ -31,6 +31,13 @@ func _ready():
 	resource_list.connect("sell", self, "_on_player_sell")
 
 
+func _process(dt):
+	for resource_id in player_data.resources:
+		var resource = player_data.resources[resource_id]
+		if resource.has("gain_per_second") and resource.gain_per_second > 0:
+			player_data.gain(resource_id, resource.gain_per_second*dt, false)
+
+
 func get_selected_bait():
 	return resource_list.get_selected_bait()
 
