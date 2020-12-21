@@ -1,31 +1,63 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
 [ext_resource path="res://Button.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ColorShader.shader" type="Shader" id=3]
 [ext_resource path="res://general_theme.tres" type="Theme" id=4]
+[ext_resource path="res://ui/ResourceList.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/Itim-Regular.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 3 )
-shader_param/bg_color = Color( 0, 0, 0, 1 )
-shader_param/fg_color = Color( 1, 1, 1, 1 )
+[sub_resource type="DynamicFont" id=1]
+size = 40
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Buttons" type="Control" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_left = 139.691
+margin_top = 173.027
+margin_right = 139.691
+margin_bottom = 177.027
 theme = ExtResource( 4 )
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Fishing" parent="Buttons" instance=ExtResource( 2 )]
-margin_left = 147.462
-margin_top = 240.22
-margin_right = 147.462
-margin_bottom = 240.22
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 170.0
+margin_bottom = 79.0561
+rect_min_size = Vector2( 170, 79.0561 )
 cooldown = 4
 text = "Go Fish"
+id = "fishing"
+reward_resource = {
+"active": false,
+"amount": 0,
+"type": ""
+}
+cost = {
+"active": true,
+"base_cost": 1,
+"exponential_progression": 1.0,
+"incremental_cost": 0,
+"times_used": 0,
+"type": "isca"
+}
+
+[node name="Dummy" parent="Buttons" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 99.0
+margin_right = 170.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 170, 50 )
+cooldown = 4
+text = "Dummy"
 id = "fishing"
 reward_resource = {
 "active": false,
@@ -41,13 +73,26 @@ cost = {
 "type": ""
 }
 
-[node name="ColorShader" type="ColorRect" parent="."]
-material = SubResource( 1 )
-anchor_right = 1.0
+[node name="ResourceList" parent="." instance=ExtResource( 5 )]
+margin_left = 423.836
+margin_top = 182.551
+margin_right = 423.836
+margin_bottom = 182.551
+mouse_filter = 1
+
+[node name="NoBaitSelected" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_right = 1280.0
-margin_bottom = 720.0
-mouse_filter = 2
+margin_left = 392.724
+margin_top = 643.184
+margin_right = 1018.72
+margin_bottom = 691.184
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Selecione alguma isca para pescar!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="no_bait_selected" from="Buttons/Fishing" to="." method="_on_Fishing_no_bait_selected"]

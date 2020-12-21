@@ -17,18 +17,32 @@ export var cost = {
 	"incremental_cost" : 20,
 	"exponential_progression": 1.2
 }
+
 signal acted
+signal no_bait_selected
 
 const HOVER_SCALE = 1.1
 const SCALE_SPEED = 3
 
 var player = null
+var main = null
 var hovered = false
 var on_cooldown := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Button.text = text
+	if cost.active:
+		var type_name
+		if cost.type != "isca":
+			type_name = player.get_resource_name(cost.type)
+		else:
+			type_name = "isca"
+		$Cost.text = "custo: %d %s" % [get_cost_amount(), type_name]
+		rect_min_size.y = $Cost.rect_position.y + $Cost.rect_size.y
+	else:
+		$Cost.text = ""
+		rect_min_size.y = $Button.rect_position.y + $Button.rect_size.y
 
 
 func _process(dt):
@@ -40,12 +54,13 @@ func _process(dt):
 		$Button.rect_scale.y = max($Button.rect_scale.y - SCALE_SPEED*dt, 1.0)
 
 
-func set_player(player_ref):
+func setup(player_ref, main_ref):
 	player = player_ref
+	main = main_ref
 
 
 func get_cost_amount():
-	pass
+	return cost.base_cost + pow((cost.times_used + cost.incremental_cost), cost.exponential_progression)
 
 
 func error():
@@ -66,11 +81,23 @@ func start_cooldown():
 
 func _on_Button_pressed():
 	if cost.active:
-		if player.get_resource_amount(cost.type) > get_cost_amount():
-			player.spend(cost.type, get_cost_amount())
+		if cost.type != "isca":
+			if player.get_resource_amount(cost.type) > get_cost_amount():
+				player.spend(cost.type, get_cost_amount())
+			else:
+				error()
+				return
 		else:
-			error()
-			return
+			var bait = main.get_selected_bait()
+			if not bait:
+				emit_signal("no_bait_selected")
+				return
+			else:
+				if player.get_resource_amount(bait) > get_cost_amount():
+					player.spend(bait, get_cost_amount())
+				else:
+					error()
+				return
 	AudioManager.play_sfx("click_button")
 	if reward_resource.active:
 		player.get(reward_resource.type, reward_resource.amount)

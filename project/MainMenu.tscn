@@ -88,7 +88,7 @@ playing = true
 [node name="Waterfall" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 640, 644.359 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

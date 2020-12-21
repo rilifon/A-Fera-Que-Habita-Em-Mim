@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Button.gd" type="Script" id=1]
 [ext_resource path="res://general_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/images/buttons/button_disabled.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Itim-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Cooldown"
@@ -38,6 +45,10 @@ tracks/0/keys = {
 [node name="Button" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1110.0
+margin_bottom = -720.0
+rect_min_size = Vector2( 170, 0 )
+mouse_filter = 2
 theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -62,7 +73,20 @@ margin_right = 170.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 170, 50 )
 rect_pivot_offset = Vector2( 85, 25 )
-text = "test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="."]
+margin_left = 0.943848
+margin_top = 49.0561
+margin_right = 170.944
+margin_bottom = 79.0561
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "$: 1 itubaina"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
