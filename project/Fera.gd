@@ -20,13 +20,13 @@ func _ready():
 		bar.value = current_value
 		bar.max_value = MAX_VALUES[level]
 
-func feed(loot):
+func feed(loot, amount):
 	randomize()
 	if randf() <= .5:
 		AudioManager.play_sfx("chomp1")
 	else:
 		AudioManager.play_sfx("chomp2")
-	current_value += loot.feed_value
+	current_value += loot.feed_value * amount
 	if level < MAX_LEVEL:
 		if current_value >= bar.max_value:
 			level_up()

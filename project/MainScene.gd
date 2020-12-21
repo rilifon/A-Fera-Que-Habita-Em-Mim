@@ -68,7 +68,7 @@ func _on_Fishing_no_bait_selected():
 
 func _on_player_feed(loot, value):
 	player_data.spend(loot, value)
-	fera.feed(LootManager.get_loot_data(loot))
+	fera.feed(LootManager.get_loot_data(loot), value)
 
 
 func _on_player_sell(loot, value):
