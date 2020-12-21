@@ -48,27 +48,27 @@ length = 45.5
 step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera2D:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 40, 42 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 36, 40, 42 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 640, 360 ), Vector2( 577, 372 ), Vector2( 640, 360 ) ]
+"values": [ Vector2( 640, 360 ), Vector2( 614.8, 364.8 ), Vector2( 577, 372 ), Vector2( 640, 360 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Camera2D:zoom")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 40, 42 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 36, 40, 42 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.03, 0.03 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0.612, 0.612 ), Vector2( 0.03, 0.03 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("TextLayer/Story:text")
@@ -155,7 +155,7 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Menu/VBoxContainer/Continue:disabled")
+tracks/9/path = NodePath("Menu/VBoxContainer/NewGame:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -166,25 +166,13 @@ tracks/9/keys = {
 "update": 1,
 "values": [ true, true, false ]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("Menu/VBoxContainer/NewGame:disabled")
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 45, 45.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, true, false ]
-}
-tracks/11/type = "method"
-tracks/11/path = NodePath(".")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
 "times": PoolRealArray( 40 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -192,13 +180,13 @@ tracks/11/keys = {
 "method": "set_process"
 } ]
 }
-tracks/12/type = "value"
-tracks/12/path = NodePath("TextLayer/Skip:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/path = NodePath("TextLayer/Skip:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
 "times": PoolRealArray( 0, 40 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -225,7 +213,6 @@ __meta__ = {
 }
 
 [node name="Intro" type="Node2D" parent="."]
-visible = false
 
 [node name="Ahab" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 635.213, 391.257 )
@@ -236,7 +223,6 @@ playing = true
 [node name="Waterfall" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 640, 644.359 )
 frames = SubResource( 2 )
-frame = 2
 playing = true
 
 [node name="Menu" type="Control" parent="."]
@@ -281,25 +267,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Continue" type="Button" parent="Menu/VBoxContainer"]
+[node name="NewGame" type="Button" parent="Menu/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 200, 70 )
-disabled = true
-text = "Continuar"
-
-[node name="NewGame" type="Button" parent="Menu/VBoxContainer"]
-margin_top = 74.0
-margin_right = 200.0
-margin_bottom = 144.0
 rect_min_size = Vector2( 200, 70 )
 disabled = true
 text = "Novo jogo"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 577, 372 )
+position = Vector2( 640, 360 )
 current = true
-zoom = Vector2( 0.03, 0.03 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
@@ -313,7 +290,7 @@ margin_bottom = 77.0
 rect_min_size = Vector2( 1280, 100 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "E eu preciso alimentá-la..."
+text = "Minha história começa no fim do mundo"
 align = 1
 valign = 1
 clip_text = true
@@ -351,3 +328,4 @@ text = "Segure para pular introdução"
 stream = ExtResource( 14 )
 autoplay = true
 bus = "BGM"
+[connection signal="pressed" from="Menu/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]

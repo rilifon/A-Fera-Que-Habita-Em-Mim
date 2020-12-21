@@ -35,3 +35,7 @@ func skip():
 	set_process(false)
 	skip_box.hide()
 	animation.seek(45.5, true)
+
+
+func _on_NewGame_pressed():
+	get_tree().change_scene("res://MainScene.tscn")
