@@ -44,7 +44,7 @@ var resources = {
 		"max": 1,
 		"gain_per_second": 0,
 		"suffix": "naco",
-		"showing": true
+		"showing": false
 	},
 }
 
