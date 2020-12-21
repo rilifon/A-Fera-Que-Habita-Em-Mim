@@ -85,6 +85,8 @@ func update_loot_amount(resource_object):
 
 func set_resource_text(resource_object):
 	var resource = player.resources[resource_object.type]
+	if resource.amount > 0:
+		resource_object.show()
 	if resource_object is Button:
 		resource_object.text = "                 %s: %d %s" % [resource.name, resource.amount, resource.suffix]
 	elif resource_object is Label:
