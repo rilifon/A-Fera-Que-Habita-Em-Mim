@@ -44,7 +44,7 @@ func setup(player_data):
 					new_button.type = resource_id
 					set_resource_text(new_button)
 					new_button.pressed = false
-					new_button.connect("pressed", self, "_on_button_pressed")
+					new_button.connect("pressed", self, "_on_button_pressed", [new_button])
 					$HBoxContainer/FirstList.add_child(new_button)
 					if not resource.showing:
 						new_button.hide()
@@ -109,5 +109,8 @@ func _on_loot_feed(loot, value):
 func _on_loot_sell(loot, value):
 	emit_signal("sell", loot, value)
 
-func _on_button_pressed():
+func _on_button_pressed(button):
 	AudioManager.play_sfx("click_bait")
+	for other_button in $HBoxContainer/FirstList.get_children():
+		if other_button is Button and button != other_button:
+			other_button.pressed = false

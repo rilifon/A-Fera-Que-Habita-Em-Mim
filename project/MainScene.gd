@@ -6,7 +6,7 @@ onready var fera = $Fera
 
 var player_data
 
-var cur_level = 0
+var cur_level = 3
 
 func _input(event):
 	#TODO: Remove this DEBUG
