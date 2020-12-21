@@ -109,8 +109,7 @@ func maxed_out():
 	rect_min_size.y = $Button.rect_position.y + $Button.rect_size.y
 	disable = true
 
-
-func _on_Button_pressed():
+func activate_button(auto_use:= false):
 	if disable:
 		error()
 		return
@@ -120,20 +119,24 @@ func _on_Button_pressed():
 			if player.get_resource_amount(cost.type) >= get_cost_amount():
 				player.spend(cost.type, get_cost_amount())
 			else:
-				error()
+				if not auto_use:
+					error()
 				return
 		else:
 			var bait = main.get_selected_bait()
 			if not bait:
-				emit_signal("no_bait_selected")
+				if not auto_use:
+					emit_signal("no_bait_selected")
 				return
 			else:
 				if player.get_resource_amount(bait) >= get_cost_amount():
 					player.spend(bait, get_cost_amount())
 				else:
-					error()
+					if not auto_use:
+						error()
 					return
-	AudioManager.play_sfx("click_button")
+	if not auto_use:
+		AudioManager.play_sfx("click_button")
 	cost.times_used += 1
 	update_cost_text()
 	if cooldown and not on_cooldown:
@@ -143,7 +146,8 @@ func _on_Button_pressed():
 	if reward_resource.active:
 		player.gain(reward_resource.type, reward_resource.amount)
 		if cost.active:
-			AudioManager.play_sfx("buying")
+			if not auto_use:
+				AudioManager.play_sfx("buying")
 		if reward_resource.has("engine") and reward_resource.engine.active:
 			player.increase_gain_per_second(reward_resource.engine.type, reward_resource.engine.amount)
 		
@@ -153,6 +157,9 @@ func _on_Button_pressed():
 	else:
 		emit_signal("acted", self)
 		
+func _on_Button_pressed():
+	activate_button()
+	
 
 
 func _on_Button_mouse_entered():

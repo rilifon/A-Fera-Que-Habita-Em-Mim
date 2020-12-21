@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="Buttons" type="VBoxContainer" parent="Interface"]
 margin_right = 170.0
-margin_bottom = 575.0
+margin_bottom = 645.0
 theme = ExtResource( 4 )
 custom_constants/separation = 20
 alignment = 1
@@ -137,12 +137,40 @@ cost = {
 "type": "money"
 }
 
-[node name="Bait1" parent="Interface/Buttons" instance=ExtResource( 2 )]
+[node name="AutoFish" parent="Interface/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 315.0
 margin_right = 170.0
 margin_bottom = 365.0
+text = "     Comprar Molinete   "
+id = "buy_autofish"
+level_unlocked = 3
+reward_resource = {
+"active": true,
+"amount": 1,
+"engine": {
+"active": false,
+"amount": 0.0,
+"type": ""
+},
+"type": "auto_fish"
+}
+cost = {
+"active": true,
+"base_cost": 1000,
+"exponential_progression": 1.2,
+"incremental_cost": 0,
+"times_used": 0,
+"type": "money"
+}
+
+[node name="Bait1" parent="Interface/Buttons" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 385.0
+margin_right = 170.0
+margin_bottom = 435.0
 text = "   Comprar Minhocas   "
 id = "buy_bait1"
 reward_resource = {
@@ -162,9 +190,9 @@ cost = {
 [node name="Bait2" parent="Interface/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 385.0
+margin_top = 455.0
 margin_right = 170.0
-margin_bottom = 435.0
+margin_bottom = 505.0
 text = "   Comprar Hot Dog   "
 id = "buy_bait1"
 level_unlocked = 2
@@ -185,9 +213,9 @@ cost = {
 [node name="Bait3" parent="Interface/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 455.0
+margin_top = 525.0
 margin_right = 170.0
-margin_bottom = 505.0
+margin_bottom = 575.0
 text = "   Comprar Gorgonzola   "
 id = "buy_bait1"
 level_unlocked = 3
@@ -208,9 +236,9 @@ cost = {
 [node name="Beg" parent="Interface/Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 525.0
+margin_top = 595.0
 margin_right = 170.0
-margin_bottom = 575.0
+margin_bottom = 645.0
 cooldown = 0.2
 text = "Mendigar"
 id = "fishing"
@@ -234,7 +262,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 270.0
 margin_right = 270.0
-margin_bottom = 575.0
+margin_bottom = 645.0
 mouse_filter = 1
 
 [node name="NoBaitSelected" type="Label" parent="."]

@@ -5,7 +5,7 @@ onready var resource_list = $Interface/ResourceList
 
 var player_data
 
-var cur_level = 0
+var cur_level = 3
 
 func _input(event):
 	#TODO: Remove this DEBUG
@@ -36,7 +36,9 @@ func _process(dt):
 		var resource = player_data.resources[resource_id]
 		if resource.has("gain_per_second") and resource.gain_per_second > 0:
 			player_data.gain(resource_id, resource.gain_per_second*dt, false)
-
+	
+	if player_data.get_resource_amount("auto_fish") and not $Interface/Buttons/Fishing.on_cooldown:
+		$Interface/Buttons/Fishing.activate_button(true)
 
 func get_selected_bait():
 	return resource_list.get_selected_bait()
