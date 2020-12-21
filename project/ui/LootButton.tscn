@@ -41,7 +41,7 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="MainContainer"]
-margin_right = 382.0
+margin_right = 451.0
 margin_bottom = 37.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -52,7 +52,7 @@ __meta__ = {
 
 [node name="ContentContainer" type="HBoxContainer" parent="MainContainer"]
 margin_top = 41.0
-margin_right = 382.0
+margin_right = 451.0
 margin_bottom = 164.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -88,82 +88,82 @@ text = "$ 20 $"
 
 [node name="Buttons" type="VBoxContainer" parent="MainContainer/ContentContainer"]
 margin_left = 68.0
-margin_right = 382.0
+margin_right = 451.0
 margin_bottom = 123.0
 alignment = 1
 
 [node name="FeedButtons" type="HBoxContainer" parent="MainContainer/ContentContainer/Buttons"]
 margin_top = 32.0
-margin_right = 314.0
+margin_right = 383.0
 margin_bottom = 59.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Feed1" type="Button" parent="MainContainer/ContentContainer/Buttons/FeedButtons"]
-margin_right = 88.0
+margin_right = 102.0
 margin_bottom = 27.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "  feed x1  "
+text = "  nutrir x1  "
 script = ExtResource( 5 )
 
 [node name="Feed10" type="Button" parent="MainContainer/ContentContainer/Buttons/FeedButtons"]
-margin_left = 92.0
-margin_right = 194.0
+margin_left = 106.0
+margin_right = 222.0
 margin_bottom = 27.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "  feed x10  "
+text = "  nutrir x10  "
 script = ExtResource( 5 )
 
 [node name="Feed100" type="Button" parent="MainContainer/ContentContainer/Buttons/FeedButtons"]
-margin_left = 198.0
-margin_right = 314.0
+margin_left = 226.0
+margin_right = 356.0
 margin_bottom = 27.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "  feed x100  "
+text = "  nutrir x100  "
 script = ExtResource( 5 )
 
 [node name="SellButtons" type="HBoxContainer" parent="MainContainer/ContentContainer/Buttons"]
 margin_top = 63.0
-margin_right = 314.0
+margin_right = 383.0
 margin_bottom = 90.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sell1" type="Button" parent="MainContainer/ContentContainer/Buttons/SellButtons"]
-margin_right = 79.0
+margin_right = 111.0
 margin_bottom = 27.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "  sell x1  "
+text = "  vender x1  "
 script = ExtResource( 5 )
 
 [node name="Sell10" type="Button" parent="MainContainer/ContentContainer/Buttons/SellButtons"]
-margin_left = 83.0
-margin_right = 176.0
+margin_left = 115.0
+margin_right = 240.0
 margin_bottom = 27.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "  sell x10  "
+text = "  vender x10  "
 script = ExtResource( 5 )
 
 [node name="Sell100" type="Button" parent="MainContainer/ContentContainer/Buttons/SellButtons"]
-margin_left = 180.0
-margin_right = 287.0
+margin_left = 244.0
+margin_right = 383.0
 margin_bottom = 27.0
 focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "  sell x100  "
+text = "  vender x100  "
 script = ExtResource( 5 )
 [connection signal="mouse_entered" from="MainContainer/ContentContainer/Buttons/FeedButtons/Feed1" to="." method="_on_button_mouse_entered" binds= [ "feed", 0 ]]
 [connection signal="mouse_exited" from="MainContainer/ContentContainer/Buttons/FeedButtons/Feed1" to="." method="_on_button_mouse_exited" binds= [ "feed", 0 ]]
