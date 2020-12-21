@@ -6,7 +6,7 @@ onready var fera = $Fera
 
 var player_data
 
-var cur_level = 3
+var cur_level = 0
 
 func _input(event):
 	#TODO: Remove this DEBUG
@@ -40,8 +40,8 @@ func _process(dt):
 		if resource.has("gain_per_second") and resource.gain_per_second > 0:
 			player_data.gain(resource_id, resource.gain_per_second*dt, false)
 	
-	if player_data.get_resource_amount("auto_fish") and not $Interface/Buttons/Fishing.on_cooldown:
-		$Interface/Buttons/Fishing.activate_button(true)
+	if player_data.get_resource_amount("auto_fish") and not $Interface/ScrollContainer/Buttons/Fishing.on_cooldown:
+		$Interface/ScrollContainer/Buttons/Fishing.activate_button(true)
 
 func get_selected_bait():
 	return resource_list.get_selected_bait()

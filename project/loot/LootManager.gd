@@ -10,6 +10,7 @@ const LOOTS = [
 	preload("res://loot/loot7.tres"),
 	preload("res://loot/loot8.tres"),
 	preload("res://loot/loot9.tres"),
+	preload("res://loot/loot10.tres"),
 ]
 
 func get_all_loots():

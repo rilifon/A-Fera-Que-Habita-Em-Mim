@@ -25,14 +25,6 @@ func _ready():
 	randomize()
 	curr_palette = randi()%palettes.size()
 
-
-func _input(event):
-	if event.is_action_pressed("ui_right"):
-		change_to((curr_palette + 1) % palettes.size())
-	elif event.is_action_pressed("ui_left"):
-		change_to((curr_palette - 1) % palettes.size())
-
-
 func _process(delta):
 	var bg_color = palettes[curr_palette][BG]
 	var fg_color = palettes[curr_palette][FG]
