@@ -54,6 +54,7 @@ func _on_button_acted(button):
 		var loot = FishingManager.get_loot(bait, player_data)
 		player_data.gain(loot, 1)
 	elif button.id == "buy_ending":
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://Ending.tscn")
 
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/intro/fera_2.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Itim-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/images/intro/fera_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/audio/bgm/ending.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Ending.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,6 +25,7 @@ font_data = ExtResource( 2 )
 [node name="Ending" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,3 +62,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "BGM"
