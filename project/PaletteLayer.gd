@@ -30,6 +30,7 @@ var transition_timer : float
 
 func _ready():
 	set_process(false)
+	randomize()
 	curr_palette = randi()%palettes.size()
 
 

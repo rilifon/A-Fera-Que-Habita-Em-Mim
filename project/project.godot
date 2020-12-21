@@ -25,6 +25,7 @@ BaitManager="*res://baits/BaitManager.gd"
 LootManager="*res://loot/LootManager.gd"
 AudioManager="*res://audio/AudioManager.tscn"
 PaletteLayer="*res://PaletteLayer.tscn"
+FishingManager="*res://FishingManager.gd"
 
 [display]
 

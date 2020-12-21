@@ -1,10 +1,13 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://loot/loot.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
 id = "loot_1"
 loot_name = "Banana"
-fishing_chance = 2
-minimium_length = 3
+image = ExtResource( 2 )
+fishing_chance = 10
+minimum_length = 0
+base_cost = 15

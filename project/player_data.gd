@@ -15,16 +15,20 @@ var resources = {
 		"suffix": "metros",
 		"showing": true
 	},
-	"bait":{}
 }
 
 func init():
 	var first = true
+	resources["bait"] = {}
 	for bait in BaitManager.get_all_baits():
-		resources[bait.id] = {"name": bait.bait_name, "amount": 2, "showing": false, "suffix": "unidades",}
+		resources[bait.id] = {"name": bait.bait_name, "amount": 0, "showing": false, "suffix": "unidades",}
 		if first:
 			first = false
 			resources[bait.id].showing = true
+	
+	resources["loot"] = {}
+	for loot in LootManager.get_all_loots():
+		resources[loot.id] = {"name": loot.loot_name, "amount": 0, "showing": false, "image": loot.image}	
 
 func update_resources():
 	emit_signal("update_resources")
@@ -45,4 +49,6 @@ func spend(name, amount):
 func gain(name, amount):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))
 	resources[name].amount = resources[name].amount + amount
+	if name == "money":
+		AudioManager.play_sfx("getting_money")
 	update_resources()

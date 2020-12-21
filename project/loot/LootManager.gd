@@ -3,6 +3,13 @@ extends Node
 const LOOTS = [
 	preload("res://loot/loot1.tres"),
 	preload("res://loot/loot2.tres"),
+	preload("res://loot/loot3.tres"),
+	preload("res://loot/loot4.tres"),
+	preload("res://loot/loot5.tres"),
+	preload("res://loot/loot6.tres"),
+	preload("res://loot/loot7.tres"),
+	preload("res://loot/loot8.tres"),
+	preload("res://loot/loot9.tres"),
 ]
 
 func get_all_loots():

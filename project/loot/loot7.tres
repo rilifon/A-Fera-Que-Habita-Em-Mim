@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource( 1 )
-id = "loot_2"
-loot_name = "Jambu"
+id = "loot_7"
+loot_name = "luigi"
 image = ExtResource( 2 )
-fishing_chance = 5
-minimum_length = 4
-base_cost = 50
+fishing_chance = 10
+minimum_length = 0
+base_cost = 390
