@@ -5,7 +5,7 @@ onready var resource_list = $Interface/ResourceList
 
 var player_data
 
-var cur_level = 2
+var cur_level = 0
 
 func _input(event):
 	#TODO: Remove this DEBUG
