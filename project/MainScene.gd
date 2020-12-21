@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var buttons = $Interface/Buttons
+onready var buttons = $Interface/ScrollContainer/Buttons
 onready var resource_list = $Interface/ResourceList
 
 var player_data
