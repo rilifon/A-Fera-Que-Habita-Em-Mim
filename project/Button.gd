@@ -93,11 +93,11 @@ func _on_Button_pressed():
 				emit_signal("no_bait_selected")
 				return
 			else:
-				if player.get_resource_amount(bait) > get_cost_amount():
+				if player.get_resource_amount(bait) >= get_cost_amount():
 					player.spend(bait, get_cost_amount())
 				else:
 					error()
-				return
+					return
 	AudioManager.play_sfx("click_button")
 	if reward_resource.active:
 		player.get(reward_resource.type, reward_resource.amount)

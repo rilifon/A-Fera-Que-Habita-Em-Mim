@@ -8,6 +8,8 @@ func _ready():
 	player_data = load("res://player_data.gd").new()
 	player_data.init()
 	
+	player_data.connect("update_resources", $ResourceList, "update_resources")
+	
 	for button in $Buttons.get_children():
 		button.setup(player_data, self)
 		button.connect("acted", self, "_on_button_pressed")
@@ -24,6 +26,7 @@ func _on_button_pressed(button):
 
 
 func _on_Fishing_no_bait_selected():
+	AudioManager.play_sfx("error_button")
 	if $NoBaitSelected.modulate.a > 0:
 		return
 	$NoBaitSelected.modulate.a = 1.0

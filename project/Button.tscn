@@ -71,15 +71,18 @@ margin_right = 170.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 170, 50 )
 rect_pivot_offset = Vector2( 85, 25 )
+focus_mode = 0
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Cost" type="Label" parent="."]
-margin_left = 0.943848
-margin_top = 49.0561
-margin_right = 170.944
-margin_bottom = 79.0561
+margin_left = -30.0
+margin_top = 55.0
+margin_right = 210.0
+margin_bottom = 85.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1

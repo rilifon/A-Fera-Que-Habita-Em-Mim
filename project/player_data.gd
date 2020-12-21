@@ -1,5 +1,7 @@
 extends Node
 
+signal update_resources
+
 var resources = {
 	"money":{
 		"name": "Grana",
@@ -25,7 +27,7 @@ func init():
 			resources[bait.id].showing = true
 
 func update_resources():
-	pass
+	emit_signal("update_resources")
 
 func get_resource_name(name):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))
@@ -38,6 +40,7 @@ func get_resource_amount(name):
 func spend(name, amount):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))
 	resources[name].amount = max(resources[name].amount - amount, 0)
+	update_resources()
 
 func gain(name, amount):
 	assert(resources.has(name), "Resource doesn't exist: " + str(name))

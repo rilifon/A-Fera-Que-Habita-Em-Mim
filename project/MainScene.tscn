@@ -30,10 +30,10 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 170.0
-margin_bottom = 79.0561
-rect_min_size = Vector2( 170, 79.0561 )
+margin_bottom = 85.0
+rect_min_size = Vector2( 170, 85 )
 cooldown = 4
-text = "Go Fish"
+text = "Pescar!"
 id = "fishing"
 reward_resource = {
 "active": false,
@@ -52,9 +52,9 @@ cost = {
 [node name="Dummy" parent="Buttons" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 99.0
+margin_top = 105.0
 margin_right = 170.0
-margin_bottom = 149.0
+margin_bottom = 155.0
 cooldown = 4
 text = "Dummy"
 id = "fishing"
