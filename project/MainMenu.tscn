@@ -83,12 +83,12 @@ __meta__ = {
 [node name="Ahab" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 635.213, 391.257 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Waterfall" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 640, 644.359 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
