@@ -19,17 +19,21 @@ __meta__ = {
 }
 
 [node name="FirstList" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 300.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 300, 0 )
+margin_right = 440.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 440, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LootList" type="VBoxContainer" parent="HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 400.0
-margin_right = 700.0
-margin_bottom = 40.0
+margin_right = 720.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 320, 500 )
+
+[node name="LootList" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+margin_right = 300.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -20,6 +20,7 @@ func _ready():
 		bar.value = current_value
 		bar.max_value = MAX_VALUES[level]
 
+
 func feed(loot, amount):
 	randomize()
 	if randf() <= .5:

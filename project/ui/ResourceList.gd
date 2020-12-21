@@ -28,7 +28,7 @@ func setup(player_data):
 				new_label.text = "--PESCADOS--"
 				new_label.add_font_override("font", BIG_FONT)
 				new_label.type = false
-				$HBoxContainer/LootList.add_child(new_label)
+				$HBoxContainer/ScrollContainer/LootList.add_child(new_label)
 				
 			elif resource_id != "bait":
 				var resource = player.resources[resource_id]
@@ -58,7 +58,7 @@ func setup(player_data):
 		else:
 			var resource = player.resources[resource_id]
 			var new_loot = LOOT.instance()
-			$HBoxContainer/LootList.add_child(new_loot)
+			$HBoxContainer/ScrollContainer/LootList.add_child(new_loot)
 			new_loot.setup(resource_id)
 			new_loot.connect("feed", self, "_on_loot_feed")
 			new_loot.connect("sell", self, "_on_loot_sell")
@@ -75,7 +75,7 @@ func update_resources():
 	for resource in $HBoxContainer/FirstList.get_children():
 		if resource.type:
 			set_resource_text(resource)
-	for resource in $HBoxContainer/LootList.get_children():
+	for resource in $HBoxContainer/ScrollContainer/LootList.get_children():
 		if resource.type:
 			update_loot_amount(resource)
 

@@ -66,7 +66,9 @@ alignment = 1
 [node name="Image" type="TextureRect" parent="MainContainer/ContentContainer/ImageContainer"]
 margin_right = 64.0
 margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 1 )
+expand = true
 
 [node name="Amount" type="Label" parent="MainContainer/ContentContainer/ImageContainer"]
 margin_top = 68.0
