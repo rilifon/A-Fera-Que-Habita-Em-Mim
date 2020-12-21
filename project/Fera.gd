@@ -6,7 +6,7 @@ onready var bar = $VBoxContainer/Bar
 onready var max_label = $VBoxContainer/Bar/MaxLabel
 
 const MAX_LEVEL = 4
-const MAX_VALUES = [100, 120, 140, 160, 180]
+const MAX_VALUES = [50, 120, 250, 500, 1080]
 
 var level := 0
 var current_value := 0
@@ -19,16 +19,6 @@ func _ready():
 	else:
 		bar.value = current_value
 		bar.max_value = MAX_VALUES[level]
-
-
-func _input(event):
-	if event.is_action_pressed("skip"):
-		current_value += 50
-		if current_value >= bar.max_value:
-			level_up()
-		else:
-			bar.value = current_value
-
 
 func feed(loot):
 	current_value += loot.feed_value

@@ -222,6 +222,7 @@ playing = true
 [node name="Waterfall" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 640, 644.359 )
 frames = SubResource( 2 )
+frame = 3
 playing = true
 
 [node name="Menu" type="Control" parent="."]
@@ -270,6 +271,7 @@ margin_right = 200.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 200, 70 )
 disabled = true
+enabled_focus_mode = 0
 text = "Novo jogo"
 
 [node name="Camera2D" type="Camera2D" parent="."]

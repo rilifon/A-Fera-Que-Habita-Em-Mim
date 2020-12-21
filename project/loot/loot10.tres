@@ -11,3 +11,4 @@ image = ExtResource( 2 )
 fishing_chance = 2
 minimum_length = 20
 base_cost = 9999
+feed_value = 500
