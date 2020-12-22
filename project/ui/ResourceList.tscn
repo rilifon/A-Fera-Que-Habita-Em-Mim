@@ -28,9 +28,9 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 455.0
-margin_right = 775.0
+margin_right = 955.0
 margin_bottom = 500.0
-rect_min_size = Vector2( 320, 500 )
+rect_min_size = Vector2( 500, 500 )
 
 [node name="LootList" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
 margin_right = 300.0

@@ -37,6 +37,6 @@ func skip():
 	animation.seek(45.5, true)
 
 
-func _on_NewGame_pressed():
+func _on_Button_acted(_button):
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainScene.tscn")
